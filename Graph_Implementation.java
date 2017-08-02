@@ -6,19 +6,15 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Set;
 
-public class Graph {
+public class Graph_Implementation extends GraphNode{
 	
-	int v; 
-	LinkedList<Integer> adj[] = null; 
-	
-	Graph(int v){
-		adj = new LinkedList[v];
-		this.v = v;
-		for(int i = 0 ; i < v ; i++){
-			adj[i] = new LinkedList<Integer>();
-		}
+	Graph_Implementation(int v) {
+		super(v);
 	}
-	
+
+
+	boolean visited[];
+
 	public void addEdge(int v, int w){
 		adj[v].add(w);
 	}
@@ -40,18 +36,28 @@ public class Graph {
 					//System.out.println("adding "+next);
 					qu.add(next);
 				}
-			}
-			
+			}	
 		}
- 		
 	}
 	
 	public void GraphDFS(int start){
-		boolean visited[] = new boolean[v];
+		visited = new boolean[v];
 		
-		GraphDFSfriend(start,visited);
+		GraphDFSfriendS(start);
 	}
 	
+	private void GraphDFSfriendS(int start) {
+		Iterator<Integer> dfsIt = adj[start].iterator();
+		if(!visited[start]){
+			System.out.println(start); 
+		}visited[start] = true;
+		while(dfsIt.hasNext()){
+			int next_num = dfsIt.next();
+			if(!visited[next_num])
+			GraphDFSfriendS(next_num);
+		}
+	}
+
 	public void GraphDFSfriend(int start, boolean[] DFSvisited){
 		Iterator<Integer> dfsI = adj[start].iterator();
 		System.out.println(start);
@@ -62,19 +68,19 @@ public class Graph {
 			GraphDFSfriend(next,DFSvisited);
 			}
 		}
-	
 	}
+	
 	public void printGraph() {
 		for(int i = 0 ; i < v ; i++){
-			System.out.println("list "+v);
+			System.out.println("list "+i);
 			for(int j = 0; j < adj[i].size(); j++){
 				System.out.print("->"+adj[i].get(j) );
 			}
 			System.out.println();
-		}
-		
+		}	
 	}
 
+	
 	public boolean isCyclic(int start) {
 		Queue<Integer> qu = new LinkedList<Integer>();
 		Set<Integer> hs = new HashSet<Integer>();
