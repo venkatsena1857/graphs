@@ -50,7 +50,8 @@ public class Graph_Implementation extends GraphNode{
 		Iterator<Integer> dfsIt = adj[start].iterator();
 		if(!visited[start]){
 			System.out.println(start); 
-		}visited[start] = true;
+			visited[start] = true;
+		}
 		while(dfsIt.hasNext()){
 			int next_num = dfsIt.next();
 			if(!visited[next_num])
@@ -58,17 +59,6 @@ public class Graph_Implementation extends GraphNode{
 		}
 	}
 
-	public void GraphDFSfriend(int start, boolean[] DFSvisited){
-		Iterator<Integer> dfsI = adj[start].iterator();
-		System.out.println(start);
-		DFSvisited[start] = true;
-		while(dfsI.hasNext()){
-			int next = dfsI.next();
-			if(!DFSvisited[next]){
-			GraphDFSfriend(next,DFSvisited);
-			}
-		}
-	}
 	
 	public void printGraph() {
 		for(int i = 0 ; i < v ; i++){
@@ -87,7 +77,6 @@ public class Graph_Implementation extends GraphNode{
 		qu.add(start);
 		while(qu.size() != 0){
 			int print = qu.poll();
-			System.out.println(print);
 			Iterator<Integer> i = adj[print].iterator();
 			while(i.hasNext()){
 				int next = i.next();

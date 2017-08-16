@@ -3,7 +3,7 @@ package graphs;
 public class Graph_Init {
 	public static void main(String ar[]){
 		
-		Graph_Implementation g = new Graph_Implementation(4);
+		Graph_Implementation g = new Graph_Implementation(5);
 		g.addEdge(0, 1);
 		g.addEdge(0, 2);
 		g.addEdge(1, 2);
@@ -11,8 +11,9 @@ public class Graph_Init {
 		g.addEdge(2, 3);
 		g.addEdge(3, 3);
 		g.printGraph();
+		System.out.println("bfs  is below");
 		g.GraphBFS(2);
-		System.out.println("dfs");
+		System.out.println("dfs  is below");
 		g.GraphDFS(2);
 		System.out.println("graph is cyclic : "+g.isCyclic(2));
 		Graph_Implementation g2 = new Graph_Implementation(3);

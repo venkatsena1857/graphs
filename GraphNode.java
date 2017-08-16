@@ -8,6 +8,7 @@ public class GraphNode {
 	boolean visited[];
 	LinkedList<Integer> adj[] = null; 
 	
+	@SuppressWarnings("unchecked")
 	GraphNode(int v){
 		adj = new LinkedList[v];
 		this.v = v;
