@@ -6,35 +6,38 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-public class KruskalsAlgo extends WeightedGraphNode{
+public class KruskalsAlgo{
 
-	public KruskalsAlgo(char[] a) {
-		super(a);
-	}
-	
 	public static void main(String args[]){
-		char[] ch = {'a','b','c','d','e','f'};
-		
-		WeightedGraphNode wg = new WeightedGraphNode(ch);
-		
-		wg.addWeightedGraphEdge(wg, 'a', 'b', 3);
-		wg.addWeightedGraphEdge(wg, 'a', 'd', 1);
-		wg.addWeightedGraphEdge(wg, 'b', 'c', 1);
-		wg.addWeightedGraphEdge(wg, 'b', 'd', 3);
-		wg.addWeightedGraphEdge(wg, 'c', 'd', 1);
-		wg.addWeightedGraphEdge(wg, 'c', 'e', 5);
-		wg.addWeightedGraphEdge(wg, 'd', 'e', 6);
-		wg.addWeightedGraphEdge(wg, 'c', 'f', 4);
-		wg.addWeightedGraphEdge(wg, 'e', 'f', 2);
-
+		ArrayList<Edge> graph = new ArrayList<Edge>();
+		Edge ab = new Edge('a','b',3);
+		Edge bc = new Edge('b','c',1);
+		Edge cf = new Edge('c','f',4);
+		Edge fe = new Edge('f','e',2);
+		Edge ed = new Edge('e','d',6);
+		Edge da = new Edge('d','a',1);		
+		Edge db = new Edge('d','b',3);
+		Edge dc = new Edge('d','c',1);
+		Edge ce = new Edge('c','e',5);
 		
 		
 		
-		Iterator i =  wg.hm.entrySet().iterator();
-		while(i.hasNext()){
-			 Map.Entry pair = (Map.Entry)i.next();
-			 System.out.println(pair.getKey());
-			 System.out.println(pair.getValue());
+		graph.add(ab);
+		graph.add(bc);
+		graph.add(cf);
+		graph.add(fe);
+		graph.add(ed);
+		graph.add(da);
+		graph.add(db);
+		graph.add(dc);
+		graph.add(ce);
+		
+		WeightedGraphNode graphNode = new WeightedGraphNode(graph);
+		
+		for(int i = 0 ; i < graphNode.wGraph.size(); i++){
+			Edge e = graphNode.wGraph.get(i);
+			System.out.println("the source is "+e.source+" ||the dest is "+e.dest+" baruvu "+e.weight);
+			
 		}
 		
 	}

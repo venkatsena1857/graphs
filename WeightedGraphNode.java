@@ -4,32 +4,20 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class WeightedGraphNode {
-	HashMap<Character,ArrayList<Character>> hm = new HashMap<Character,ArrayList<Character>>();
-	Edge e[];
-	public WeightedGraphNode(char[] size){
-		for(int i =0 ; i < size.length; i ++){
-			char c = size[i];
-			ArrayList<Character> al = new ArrayList<Character>();
-			hm.put(c, al);
-		}
-	}
-
-	public void addWeightedGraphEdge(WeightedGraphNode x,char a,char b,int w){
-		 this.hm.get(a).add(b);
-		 this.hm.get(b).add(a);
-		 this. e = new Edge(a+""+b, w);
-	}
-	
-	public Edge getEdge(){
-		return this.e;
+	ArrayList<Edge> wGraph = new ArrayList<Edge>();
+	WeightedGraphNode(ArrayList<Edge> wGraph){
+		this.wGraph = wGraph;
 	}
 }
 
 class Edge{
-	String name;
+	char source;
+	char dest;
 	int weight;
-	public Edge(String name,int weight){
-		this.name = name;
+	
+	Edge(char source,char dest, int weight){
+		this.source = source;
+		this.dest = dest;
 		this.weight = weight;
 	}
 }
